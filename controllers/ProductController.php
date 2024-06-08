@@ -134,4 +134,29 @@ public function actionDeleteProductById()
             return ['status' => 'error', 'message' => 'Error al actualizar el producto.', 'errors' => $product->errors];
         }
     }
+
+
+    public function actionGetProductByIdFromHeader()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $request = Yii::$app->request;
+        $id = $request->headers->get('_id');
+
+        if (!$id) {
+            return ['status' => 'error', 'message' => 'El campo _id es requerido en el header.'];
+        }
+
+        $product = Product::findOne(['_id' => new \MongoDB\BSON\ObjectID($id)]);
+
+        if (!$product) {
+            Yii::$app->response->statusCode = 404; // Not Found
+            return ['status' => 'error', 'message' => 'Producto no encontrado.'];
+        }
+
+        return [
+            '_id' => (string) $product->_id,
+            'name' => $product->name,
+            'price' => $product->price,
+        ];
+    }
 }

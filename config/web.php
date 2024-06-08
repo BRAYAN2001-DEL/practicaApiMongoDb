@@ -57,6 +57,7 @@ $config = [
                 'POST product/get-by-id' => 'product/get-product-by-id',
                 'POST product/delete' => 'product/delete-product-by-id',
                 'POST product/update' => 'product/update-product-by-id',
+                'GET product/get-by-header-id' => 'product/get-product-by-id-from-header',
             ],
         ],
         
