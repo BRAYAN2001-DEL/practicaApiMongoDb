@@ -58,6 +58,10 @@ $config = [
                 'POST product/delete' => 'product/delete-product-by-id',
                 'POST product/update' => 'product/update-product-by-id',
                 'GET product/get-by-header-id' => 'product/get-product-by-id-from-header',
+                'POST product/login' => 'product/login',
+                'GET product/get-by-header-id-jwt' => 'product/get-product-by-id-from-header-jwt',
+                'PUT product/update-put' => 'product/update-product-put',
+                'DELETE product/delete/<id:\w+>' => 'product/delete',
             ],
         ],
         
